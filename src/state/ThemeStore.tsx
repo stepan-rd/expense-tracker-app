@@ -10,26 +10,33 @@ type AppThemeType = {
   themeColor: string; // Primary color for accents, buttons, etc.
   buttonTextColor: string;
   secondaryThemeColor: string; // Secondary color for accents, hover effects, etc.
-  hoverElementBgColor: string
+  hoverElementBgColor: string;
+  disabledBgColor: string;
 };
 
 type Store = {
+  themeName: "dark" | "light";
+  setThemeName: (val: "dark" | "light") => void;
   theme: AppThemeType;
   setTheme: (val: AppThemeType) => void;
 };
 
 export const useThemeStore = create<Store>((set) => ({
+  themeName: "light",
+  setThemeName: (val) => set((state) => ({ themeName: val })),
+
   theme: {
-    mainBgColor: "#fffefc", 
-    secondaryBgColor: "rgb(252, 250, 248)", 
-    mainTextColor: "#333333", 
-    secondaryTextColor: "#757575", 
-    mainBorderColor: "#E0E0E0", 
-    secondaryBorderColor: "#BDBDBD", 
+    mainBgColor: "#fffefc",
+    secondaryBgColor: "rgb(252, 250, 248)",
+    mainTextColor: "#333333",
+    secondaryTextColor: "#757575",
+    mainBorderColor: "#e3e3e3",
+    secondaryBorderColor: "#BDBDBD",
     themeColor: "#ffb34d",
     secondaryThemeColor: "#ffb34d",
     buttonTextColor: "#f9f9f9",
-    hoverElementBgColor: "#f5f5f5"
+    hoverElementBgColor: "#ededed",
+    disabledBgColor: "#ffd296",
   },
   setTheme: (val) => set(() => ({ theme: val })),
 }));

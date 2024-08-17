@@ -77,11 +77,11 @@ export function RegisterPage({}: Props) {
   return (
     <div
       className="fixed inset-0 flex items-center justify-center w-screen h-screen endless-clouds-bg"
-      style={{ backgroundColor: theme.mainBgColor }}
+      style={{ backgroundColor: theme.mainBgColor, color: theme.mainTextColor }}
     >
       <div
         className="flex flex-col font-alexandria"
-        style={{ backgroundColor: theme.secondaryBgColor, width: "300px" }}
+        style={{ backgroundColor: theme.mainBgColor, width: "300px" }}
       >
         <h1 className="mb-4 text-3xl font-bold" style={{}}>
           Register
@@ -89,19 +89,19 @@ export function RegisterPage({}: Props) {
         <Input
           type="email"
           placeholder="Email"
-          className="mb-4"
+          className="mb-4 border"
           ref={emailInputRef}
         />
         <Input
           type="password"
           placeholder="Password"
-          className="mb-4"
+          className="mb-4 border"
           ref={passwordInputRef}
         />
         <Input
           type="password"
           placeholder="Repeat password"
-          className="mb-4"
+          className="mb-4 border"
           ref={retypedPasswordInputRef}
         />
         {error && <h1 className="mb-4 text-red-600">{error}</h1>}

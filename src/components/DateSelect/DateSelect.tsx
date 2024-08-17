@@ -1,5 +1,5 @@
 import { useThemeStore } from "@/state/ThemeStore";
-import React, { SetStateAction } from "react";
+import React, { SetStateAction, useEffect } from "react";
 import { Month } from "./Month";
 import { OverlayInvisible } from "../OverlayInvisible";
 import "@/styles/styles.css";
@@ -12,48 +12,63 @@ const years = [
 ];
 
 const monthNames = [
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
   "December",
+  "November",
+  "October",
+  "September",
+  "August",
+  "July",
+  "June",
+  "May",
+  "April",
+  "March",
+  "February",
+  "January",
 ];
 
-const monthDays = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+const monthDays = [31, 30, 31, 30, 31, 30, 31, 31, 30, 31, 28, 31];
 
 type Props = {
-  setIsDateSelectVisible: React.Dispatch<SetStateAction<boolean>>;
+  overlayOnClick: () => void;
+  handleDateClick: (
+    year: number,
+    monthNumber: number,
+    dayNumber: number,
+    monthName: string
+  ) => void;
+  currSelectedDate: number | null;
 };
 
-export function DateSelect({ setIsDateSelectVisible }: Props) {
+export function DateSelect({
+  overlayOnClick,
+  handleDateClick,
+  currSelectedDate,
+}: Props) {
   const { theme } = useThemeStore();
 
   return (
     <>
-      <OverlayInvisible onClick={() => setIsDateSelectVisible(false)} />
+      <OverlayInvisible className="z-10" onClick={overlayOnClick} />
       <div
-        className="absolute z-10 flex flex-col overflow-x-hidden overflow-y-auto rounded-lg shadow-md custom-scrollbar h-96 w-fit"
+        className="absolute z-10 overflow-x-hidden overflow-y-scroll text-sm shadow-md w-fit h-96"
         style={{ backgroundColor: theme.mainBgColor }}
       >
         {years.map((year) => {
-          return monthNames.map((monthName, monthIndex) => {
+          return monthNames.map((monthName, i) => {
+            const mappingMonthNumber = monthNames.length - i;
             // if rendering currYear and the month rendering is smaller then curr month don't render the month.
-            if (year === CURR_YEAR && monthIndex + 1 < CURR_MONTH + 1) return;
+            if (year === CURR_YEAR && mappingMonthNumber > CURR_MONTH + 1)
+              return;
 
             return (
               <Month
-                key={`${year}-${monthIndex}`}
+                currSelectedDate={currSelectedDate}
+                handleDateClick={handleDateClick}
+                key={`${year}-${mappingMonthNumber}`}
                 monthName={monthName}
-                monthNumber={monthIndex + 1}
+                monthNumber={mappingMonthNumber}
                 year={year}
-                numDays={monthDays[monthIndex]}
+                numDays={monthDays[i]}
               />
             );
           });

@@ -1,24 +1,23 @@
 export type EntryType = {
-  uid: string
-  type: "Expense" | "Income",
+  uid: string;
+  type: "Expense" | "Income";
   amount: number;
-  dateAdded: number;
+  dateAddedMs: number;
   name: string;
   description: string;
-}
-
+  category: string;
+};
 
 export type UserDataType = {
   username: string | null;
-  totalExpenses: number;
-  totalIncome: number;
   entries: EntryType[];
   activityLogs: [];
-}
+  currency: { symbol: string; conversionRate: number };
+};
 
-export type SupportedCurrency = "USD" | "EUR" | "PLN" | "CZK" 
+export type SupportedCurrency = "USD" | "EUR" | "PLN" | "CZK";
 
 export type CurrencyDetailsType = {
   symbol: string;
   conversionRate: number;
-}
+};

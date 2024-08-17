@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button1 } from "../Button1";
 import { useThemeStore } from "@/state/ThemeStore";
-import { AmountSelect } from "../DateSelect/AmountSelect";
+import { AmountSelect } from "./AmountSelect";
 import { useAddEntryModalStore } from "@/state/AddEntryModalStore";
+import { useSelectAmountDropdownStore } from "@/state/SelectAmountDropdownStore";
 
 type Props = {};
 
@@ -11,12 +12,21 @@ export function SelectAmountSection({}: Props) {
 
   const { amountBtnValue } = useAddEntryModalStore();
 
+  const { currencyDetails } = useSelectAmountDropdownStore();
+
   const [isAmountSelectVisible, setIsAmountSelectVisible] = useState(false);
 
   return (
-    <div>
-      <Button1 className="mr-2" onClick={() => setIsAmountSelectVisible(true)}>
-        {amountBtnValue}
+    <div className="mr-2">
+      <Button1
+        isSelected={amountBtnValue !== "Amount" && amountBtnValue.length !== 2}
+        className="flex items-center py-1"
+        onClick={() => setIsAmountSelectVisible(true)}
+      >
+        {amountBtnValue === "Amount" && (
+          <h1 className="mr-1">{currencyDetails.symbol}</h1>
+        )}
+        {amountBtnValue.length === 2 ? "$ Amount" : amountBtnValue}
       </Button1>
       {isAmountSelectVisible && (
         <AmountSelect setIsAmountSelectVisible={setIsAmountSelectVisible} />

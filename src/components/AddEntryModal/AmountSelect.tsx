@@ -1,19 +1,16 @@
 import { useThemeStore } from "@/state/ThemeStore";
-import React, { SetStateAction, useEffect, useRef, useState } from "react";
+import React, { SetStateAction, useEffect, useState } from "react";
 import { OverlayInvisible } from "../OverlayInvisible";
 import { useAddEntryModalStore } from "@/state/AddEntryModalStore";
 import { Input } from "../Input";
 import { Dropdown } from "../Dropdown";
 import { Button1 } from "../Button1";
-import { motion } from "framer-motion";
-import { useGlobalStore } from "@/state/GlobalStore";
 import { getCurrencyDetails } from "@/hooks/getCurrencyDetails";
-import { CurrencyDetailsType, SupportedCurrency } from "@/types/types";
-import { Button } from "../Button";
 import { useSelectAmountDropdownStore } from "@/state/SelectAmountDropdownStore";
+import { DropdownOptions } from "../DropdownOptions";
+import { SupportedCurrency } from "@/types/types";
 
-// temp array :
-const currCurrencyOptions: SupportedCurrency[] = ["USD", "EUR", "PLN", "CZK"];
+import currCurrencyOptions from "@/data/appCurrencyOptions.json";
 
 type Props = {
   setIsAmountSelectVisible: React.Dispatch<SetStateAction<boolean>>;
@@ -22,7 +19,7 @@ type Props = {
 export function AmountSelect({ setIsAmountSelectVisible }: Props) {
   const { theme } = useThemeStore();
 
-  const { amountBtnValue, setEntryAmountUSD, setAmountBtnValue } =
+  const { setEntryAmountUSD, setAmountBtnValue } =
     useAddEntryModalStore();
 
   const {
@@ -53,7 +50,10 @@ export function AmountSelect({ setIsAmountSelectVisible }: Props) {
   useEffect(() => {
     const newCurrencyDetails = getCurrencyDetails(currencyDropdownBtnValue);
     setCurrencyDetails(newCurrencyDetails);
-    setAmountBtnValue(`${amountInputValue} ${newCurrencyDetails.symbol}`);
+
+    if (amountInputValue) {
+      setAmountBtnValue(`${amountInputValue} ${newCurrencyDetails.symbol}`);
+    }
 
     const amountUSD =
       Number(amountInputValue) / newCurrencyDetails.conversionRate;
@@ -87,17 +87,10 @@ export function AmountSelect({ setIsAmountSelectVisible }: Props) {
                 onClick={() => setIsCurrencyDropdownVisible(false)}
               />
               <Dropdown className="absolute">
-                {currCurrencyOptions.map((option, optionIndex) => (
-                  <motion.option
-                    onClick={() => handleOptionClick(option)}
-                    key={`${option}-${optionIndex}`}
-                    style={{ backgroundColor: theme.mainBgColor }}
-                    whileHover={{ backgroundColor: theme.secondaryBgColor }}
-                    className="px-2 hover:cursor-pointer"
-                  >
-                    {option}
-                  </motion.option>
-                ))}
+                <DropdownOptions
+                  options={currCurrencyOptions}
+                  onClick={handleOptionClick}
+                />
               </Dropdown>
             </>
           )}

@@ -12,10 +12,9 @@ import { create } from "zustand";
 
 const initialUserData: UserDataType = {
   username: null,
-  totalExpenses: 0,
-  totalIncome: 0,
   entries: [],
   activityLogs: [],
+  currency: { symbol: "$", conversionRate: 1 },
 };
 
 type Store = {
@@ -55,11 +54,7 @@ export const useFirebaseAuth = create<Store>((set) => ({
   setError: (val) => set((state) => ({ error: val })),
 
   currUserData: {
-    username: null,
-    totalExpenses: 0,
-    totalIncome: 0,
-    entries: [],
-    activityLogs: [],
+    ...initialUserData,
   },
   setCurrUserData: (val) => set((state) => ({ currUserData: val })),
 
@@ -73,7 +68,7 @@ export const useFirebaseAuth = create<Store>((set) => ({
       );
       const userId = userCredential.user.uid;
       set({ currUser: userCredential.user });
-      
+
       const userRef = doc(db, "users", userId);
       await setDoc(userRef, initialUserData);
     } catch (e: any) {

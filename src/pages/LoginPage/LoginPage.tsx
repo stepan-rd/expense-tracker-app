@@ -63,11 +63,11 @@ export function LoginPage({}: Props) {
   return (
     <div
       className="fixed inset-0 flex items-center justify-center w-screen h-screen endless-clouds-bg"
-      style={{ backgroundColor: theme.mainBgColor }}
+      style={{ backgroundColor: theme.mainBgColor, color: theme.mainTextColor }}
     >
       <div
         className="flex flex-col font-alexandria"
-        style={{ backgroundColor: theme.secondaryBgColor, width: "300px" }}
+        style={{ backgroundColor: theme.mainBgColor, width: "300px" }}
       >
         <h1 className="mb-4 text-3xl font-bold" style={{}}>
           Login

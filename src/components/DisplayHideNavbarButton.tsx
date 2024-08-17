@@ -2,11 +2,19 @@ import React from "react";
 
 type Props = {
   onClick?: () => void;
+  isNavbarVisible?: boolean;
 };
 
-export default function DisplayHideNavbarButton({ onClick }: Props) {
+export default function DisplayHideNavbarButton({
+  onClick,
+  isNavbarVisible,
+}: Props) {
   return (
-    <button>
+    <button
+      onClick={onClick}
+      className="fixed transition-all duration-500 ease"
+      style={{ left: isNavbarVisible ? "170px" : "15px" }}
+    >
       <div>
         <svg
           xmlns="http://www.w3.org/2000/svg"

@@ -16,6 +16,9 @@ type Store = {
   typeBtnValue: "Income" | "Expense" | "Type";
   setTypeBtnValue: (val: "Income" | "Expense" | "Type") => void;
 
+  categoryBtnValue: string;
+  setCategoryBtnValue: (val: string) => void;
+
   resetAddEntryModalStore: () => void;
 };
 export const useAddEntryModalStore = create<Store>((set) => ({
@@ -34,6 +37,9 @@ export const useAddEntryModalStore = create<Store>((set) => ({
   typeBtnValue: "Type",
   setTypeBtnValue: (val) => set((state) => ({ typeBtnValue: val })),
 
+  categoryBtnValue: "Category",
+  setCategoryBtnValue: (val) => set((state) => ({ categoryBtnValue: val })),
+
   resetAddEntryModalStore: () =>
     set((state) => ({
       dateBtnValue: "Date",
@@ -41,5 +47,6 @@ export const useAddEntryModalStore = create<Store>((set) => ({
       amountBtnValue: "Amount",
       entryAmountUSD: null,
       typeBtnValue: "Type",
+      categoryBtnValue: "Category"
     })),
 }));

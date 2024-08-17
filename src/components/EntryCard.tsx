@@ -3,52 +3,56 @@ import { useGlobalStore } from "@/state/GlobalStore";
 import { useThemeStore } from "@/state/ThemeStore";
 import { EntryType } from "@/types/types";
 import React, { useEffect, useState } from "react";
+import { motion } from "framer-motion"
+import { useFirebaseAuth } from "@/state/FirebaseAuth";
 
 type Props = {
   entry: EntryType;
+  index: number;
+  onClick?: () => void;
 };
 
-export function EntryCard({ entry }: Props) {
+export function EntryCard({ entry, index, onClick }: Props) {
   const { theme } = useThemeStore();
 
-  const { userCurrency } = useGlobalStore();
-
-  const [currencyDetails, setCurrencyDetails] = useState(
-    getCurrencyDetails(userCurrency)
-  );
-
-  useEffect(() => {
-    const newCurrencyDetails = getCurrencyDetails(userCurrency);
-
-    setCurrencyDetails(newCurrencyDetails);
-  }, [userCurrency]);
-
+  const { currUserData } = useFirebaseAuth();
+  
   return (
     <>
-      <div
-        className="relative grid items-center grid-cols-4 my-2"
-        style={{ color: theme.mainTextColor }}
+      <motion.div
+        whileHover={{backgroundColor: theme.hoverElementBgColor, transition: { duration: 0 }}}
+        onClick={onClick}
+        className="relative grid items-center grid-cols-5 px-4 py-3 hover:cursor-pointer"
+        style={{
+          color: theme.mainTextColor,
+          backgroundColor:
+            index % 2 !== 0 ? theme.secondaryBgColor : theme.mainBgColor,
+        }}
       >
-        <div>
-          <h1>{entry.name}</h1>
-          <h1 className="mr-4 font-light break-all">{entry.description}</h1>
+        <div className="flex flex-col items-center justify-center text-center">
+          <h1 className="break-all w-fit">{entry.name}</h1>
+          <h1 className="font-light break-all w-fit">{entry.description}</h1>
         </div>
-        <h1 className="" style={{ left: "15%" }}>
-          {entry.amount.toFixed(0)} {currencyDetails.symbol}
+        <h1 className="flex justify-center">{entry.category}</h1>
+        <h1 className="flex justify-center" style={{ left: "15%" }}>
+          {(Number(entry.amount) * currUserData.currency.conversionRate).toFixed(0)} {currUserData.currency.symbol}
         </h1>
-        <h1 className={`${entry.type === "Expense" ? "text-blue-500" : "text-cyan-400"}`} style={{ left: "60%" }}>
+        <h1
+          className={`flex justify-center`}
+          style={{ left: "60%", color: entry.type === "Expense" ? theme.secondaryThemeColor : theme.themeColor }}
+        >
           {entry.type}
         </h1>
-        <h1 className="text-sm">
-          {formatDate(entry.dateAdded)}
+        <h1 className="flex justify-center text-sm">
+          {formatDate(entry.dateAddedMs)}
         </h1>
-      </div>
-      <hr style={{borderColor: theme.mainBorderColor}}/>
+      </motion.div>
+      <hr style={{ borderColor: theme.mainBorderColor }} />
     </>
   );
 }
 
 const formatDate = (timestamp: number) => {
   const date = new Date(timestamp);
-  return date.toLocaleDateString("en-GB"); // 'en-GB' gives you DD MMM YYYY format
+  return date.toLocaleDateString("en-GB") || timestamp; // 'en-GB' gives you DD MMM YYYY format
 };

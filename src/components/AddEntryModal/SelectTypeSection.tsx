@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Button1 } from "../Button1";
 import { Dropdown } from "../Dropdown";
-import { Overlay } from "../Overlay";
 import { OverlayInvisible } from "../OverlayInvisible";
 import { useThemeStore } from "@/state/ThemeStore";
 import { useAddEntryModalStore } from "@/state/AddEntryModalStore";
 import { motion } from "framer-motion";
+import { DropdownOptions } from "../DropdownOptions";
 
 const options = ["Income", "Expense"];
 
@@ -19,15 +19,18 @@ export function SelectTypeSection({}: Props) {
   const [selectTypeDropdownVisible, setSelectTypeDropdownVisible] =
     useState(false);
 
-  function handleOptionClick(option: string) {
-    setTypeBtnValue(option);
+  function handleOptionClick(choice: string) {
+    if (choice !== "Income" && choice !== "Expense") return;
+
+    setTypeBtnValue(choice);
     setSelectTypeDropdownVisible(false);
   }
 
   return (
     <div>
       <Button1
-        className="mr-2"
+        isSelected={typeBtnValue !== "Type"}
+        className="py-1 mr-2"
         onClick={() => setSelectTypeDropdownVisible(true)}
       >
         {typeBtnValue}
@@ -37,21 +40,8 @@ export function SelectTypeSection({}: Props) {
           <OverlayInvisible
             onClick={() => setSelectTypeDropdownVisible(false)}
           />
-          <Dropdown className="absolute z-10">
-            {options.map((option, optionIndex) => (
-              <motion.option
-                style={{ backgroundColor: theme.mainBgColor }}
-                whileHover={{
-                  backgroundColor: theme.hoverElementBgColor,
-                  transition: { duration: 0 },
-                }}
-                key={`${optionIndex}-${option}`}
-                onClick={() => handleOptionClick(option)}
-                className="px-2 hover:cursor-pointer"
-              >
-                {option}
-              </motion.option>
-            ))}
+          <Dropdown className="z-10 text-sm">
+            <DropdownOptions options={options} onClick={handleOptionClick} />
           </Dropdown>
         </>
       )}
