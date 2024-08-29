@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://stepan-rd.github.io/your-repository-name/",
+  "homepage": "https://stepan-rd.github.io/expense-tracker-app/",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
