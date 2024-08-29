@@ -1,4 +1,3 @@
-import { useAddEntryModalStore } from "@/state/AddEntryModalStore";
 import { useThemeStore } from "@/state/ThemeStore";
 
 const CURR_YEAR = new Date().getFullYear();

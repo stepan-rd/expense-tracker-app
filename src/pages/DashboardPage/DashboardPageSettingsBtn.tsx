@@ -1,6 +1,6 @@
 import { useThemeStore } from "@/state/ThemeStore";
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 type Props = {
   className?: string;

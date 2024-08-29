@@ -16,7 +16,7 @@ type Store = {
 export const useDashboardPageStore = create<Store>((set) => ({
   currDisplayingTimePeriod: "All Time",
   setCurrDisplayingTimePeriod: (val) =>
-    set((state) => ({ currDisplayingTimePeriod: val })),
+    set(() => ({ currDisplayingTimePeriod: val })),
 
 
 }));

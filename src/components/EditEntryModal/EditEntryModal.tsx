@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Overlay } from "../Overlay";
 import { useThemeStore } from "@/state/ThemeStore";
 import { useFirebaseAuth } from "@/state/FirebaseAuth";

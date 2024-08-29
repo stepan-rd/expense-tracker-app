@@ -1,6 +1,6 @@
 import { useEditEntryModalStore } from "@/state/EditEntryModalStore";
 import { useThemeStore } from "@/state/ThemeStore";
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 import { Button2 } from "../Button2";
 import { Dropdown } from "../Dropdown";
 import { OverlayInvisible } from "../OverlayInvisible";
@@ -13,7 +13,7 @@ type Props = {
   disabled?: boolean;
 };
 
-export function EditTypeSection({ className, disabled }: Props) {
+export function EditTypeSection({ disabled }: Props) {
   const { theme } = useThemeStore();
 
   const { entryType, setEntryType } = useEditEntryModalStore();

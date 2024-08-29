@@ -45,18 +45,18 @@ type Store = {
 
 export const useFirebaseAuth = create<Store>((set) => ({
   currUser: "",
-  setCurrUser: (val) => set((state) => ({ currUser: val })),
+  setCurrUser: (val) => set(() => ({ currUser: val })),
 
   loading: true,
-  setLoading: (val) => set((state) => ({ loading: val })),
+  setLoading: (val) => set(() => ({ loading: val })),
 
   error: "",
-  setError: (val) => set((state) => ({ error: val })),
+  setError: (val) => set(() => ({ error: val })),
 
   currUserData: {
     ...initialUserData,
   },
-  setCurrUserData: (val) => set((state) => ({ currUserData: val })),
+  setCurrUserData: (val) => set(() => ({ currUserData: val })),
 
   registerUser: async (email, password) => {
     try {

@@ -1,6 +1,6 @@
 import { useFirebaseAuth } from "@/state/FirebaseAuth";
 import { useThemeStore } from "@/state/ThemeStore";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 type Props = {
   className?: string;
@@ -12,12 +12,17 @@ export function ExpenseCard({ className }: Props) {
   const { currUserData } = useFirebaseAuth();
 
   const [currDisplayingExpenses, setCurrDisplayingExpenses] = useState(
-    currUserData.totalExpenses
+    currUserData.entries
+      .filter((entry) => entry.type === "Expense")
+      .reduce((acc, entry) => acc + entry.amount, 0)
   );
 
   useEffect(() => {
-    setCurrDisplayingExpenses(currUserData.totalExpenses);
-  }, [currUserData.totalExpenses]);
+    const totalExpenses = currUserData.entries
+      .filter((entry) => entry.type === "Expense")
+      .reduce((acc, entry) => acc + entry.amount, 0);
+    setCurrDisplayingExpenses(totalExpenses);
+  }, [currUserData.entries]);
 
   return (
     <div

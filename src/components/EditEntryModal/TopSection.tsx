@@ -1,7 +1,7 @@
 import { EditModalSettingsDropdown } from "@/components/EditEntryModal/EditModalSettingsDropdown";
 import { OverlayInvisible } from "@/components/OverlayInvisible";
 import { useThemeStore } from "@/state/ThemeStore";
-import React, { useState } from "react";
+import { useState } from "react";
 
 type Props = {
   closeModal: () => void;

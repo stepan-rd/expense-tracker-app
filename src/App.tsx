@@ -1,4 +1,4 @@
-import { Outlet, useNavigate } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import { Navbar } from "./components/Navbar";
 import { useGlobalStore } from "./state/GlobalStore";
 import { AddEntryModal } from "./components/AddEntryModal/AddEntryModal";
@@ -7,7 +7,7 @@ import { useThemeStore } from "./state/ThemeStore";
 function App() {
   const { theme } = useThemeStore();
 
-  const { isAddEntryModalVisible } = useGlobalStore();
+  const { } = useGlobalStore();
 
   return (
     <div

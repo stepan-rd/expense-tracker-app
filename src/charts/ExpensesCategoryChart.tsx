@@ -6,7 +6,7 @@ import {
   PieController,
   ChartConfiguration,
 } from "chart.js";
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import ChartDataLabels from 'chartjs-plugin-datalabels'; // Import the data labels plugin
 
 // Register the required components and plugin

@@ -3,7 +3,7 @@ import { Input } from "@/components/Input";
 import { Overlay } from "@/components/Overlay";
 import { useFirebaseAuth } from "@/state/FirebaseAuth";
 import { useThemeStore } from "@/state/ThemeStore";
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 type Props = {};
 

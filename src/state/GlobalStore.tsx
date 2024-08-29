@@ -14,7 +14,7 @@ type Store = {
 export const useGlobalStore = create<Store>((set) => ({
   isAddEntryModalVisible: false,
   setIsAddEntryModalVisible: (val) =>
-    set((state) => ({ isAddEntryModalVisible: val })),
+    set(() => ({ isAddEntryModalVisible: val })),
 
   isNavbarVisible: true,
   setIsNavbarVisible: (val) =>
@@ -24,6 +24,6 @@ export const useGlobalStore = create<Store>((set) => ({
     })),
 
   pagePaddingLeft: "210px",
-  setPagePaddingLeft: (val) => set((state) => ({ pagePaddingLeft: val })),
+  setPagePaddingLeft: (val) => set(() => ({ pagePaddingLeft: val })),
  
 }));

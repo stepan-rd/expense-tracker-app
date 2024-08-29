@@ -23,25 +23,25 @@ type Store = {
 };
 export const useAddEntryModalStore = create<Store>((set) => ({
   dateBtnValue: "Date",
-  setDateBtnValue: (val) => set((state) => ({ dateBtnValue: val })),
+  setDateBtnValue: (val) => set(() => ({ dateBtnValue: val })),
 
   entryDate: null,
-  setEntryDate: (val) => set((state) => ({ entryDate: val })),
+  setEntryDate: (val) => set(() => ({ entryDate: val })),
 
   amountBtnValue: "Amount",
-  setAmountBtnValue: (val) => set((state) => ({ amountBtnValue: val })),
+  setAmountBtnValue: (val) => set(() => ({ amountBtnValue: val })),
 
   entryAmountUSD: null,
-  setEntryAmountUSD: (val) => set((state) => ({ entryAmountUSD: val })),
+  setEntryAmountUSD: (val) => set(() => ({ entryAmountUSD: val })),
 
   typeBtnValue: "Type",
-  setTypeBtnValue: (val) => set((state) => ({ typeBtnValue: val })),
+  setTypeBtnValue: (val) => set(() => ({ typeBtnValue: val })),
 
   categoryBtnValue: "Category",
-  setCategoryBtnValue: (val) => set((state) => ({ categoryBtnValue: val })),
+  setCategoryBtnValue: (val) => set(() => ({ categoryBtnValue: val })),
 
   resetAddEntryModalStore: () =>
-    set((state) => ({
+    set(() => ({
       dateBtnValue: "Date",
       entryDate: null,
       amountBtnValue: "Amount",

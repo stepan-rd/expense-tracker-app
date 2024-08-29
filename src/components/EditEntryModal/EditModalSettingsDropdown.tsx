@@ -1,4 +1,3 @@
-import React from "react";
 import { Dropdown } from "../Dropdown";
 import { useThemeStore } from "@/state/ThemeStore";
 import { motion } from "framer-motion";

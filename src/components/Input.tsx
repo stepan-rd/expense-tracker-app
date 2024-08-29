@@ -1,5 +1,5 @@
 import { useThemeStore } from "@/state/ThemeStore";
-import { forwardRef, Ref } from "react";
+import { forwardRef } from "react";
 import "@/styles/styles.css";
 
 type Props = {

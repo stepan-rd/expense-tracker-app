@@ -18,17 +18,17 @@ type Store = {
 
 export const useSelectAmountDropdownStore = create<Store>((set) => ({
   currencyDetails: getCurrencyDetails("USD"),
-  setCurrencyDetails: (val) => set((state) => ({ currencyDetails: val })),
+  setCurrencyDetails: (val) => set(() => ({ currencyDetails: val })),
 
   currencyDropdownBtnValue: "USD",
   setCurrencyDropdownBtnValue: (val) =>
-    set((state) => ({ currencyDropdownBtnValue: val })),
+    set(() => ({ currencyDropdownBtnValue: val })),
 
   amountInputValue: "",
-  setAmountInputValue: (val) => set((state) => ({ amountInputValue: val })),
+  setAmountInputValue: (val) => set(() => ({ amountInputValue: val })),
 
   resetSelectAmountDropdownStoreStore: () =>
-    set((state) => ({
+    set(() => ({
       currencyDetails: getCurrencyDetails("USD"),
       currencyDropdownBtnValue: "USD",
       amountInputValue: "",

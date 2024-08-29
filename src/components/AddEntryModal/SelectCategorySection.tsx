@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Button1 } from "../Button1";
 import { useAddEntryModalStore } from "@/state/AddEntryModalStore";
 import { Dropdown } from "../Dropdown";

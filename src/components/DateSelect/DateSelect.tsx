@@ -1,5 +1,4 @@
 import { useThemeStore } from "@/state/ThemeStore";
-import React, { SetStateAction, useEffect } from "react";
 import { Month } from "./Month";
 import { OverlayInvisible } from "../OverlayInvisible";
 import "@/styles/styles.css";

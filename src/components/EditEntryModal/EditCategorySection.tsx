@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Button2 } from "../Button2";
 import { Dropdown } from "../Dropdown";
 import dropdownExpenseOptions from "@/data/dropdownExpenseOptions.json";

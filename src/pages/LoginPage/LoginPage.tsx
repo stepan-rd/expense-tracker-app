@@ -14,7 +14,7 @@ export function LoginPage({}: Props) {
 
   const { theme } = useThemeStore();
 
-  const { error, setError, loginUser, signInWithGoogle, saveUserData, currUser, currUserData } = useFirebaseAuth();
+  const { error, setError, loginUser, signInWithGoogle } = useFirebaseAuth();
 
   const [loading, setLoading] = useState(false);
 

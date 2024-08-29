@@ -37,22 +37,22 @@ export const useEditEntryModalStore = create<Store>((set) => ({
     })),
 
   editingEntryUid: null,
-  setEditingEntryUid: (val) => set((state) => ({ editingEntryUid: val })),
+  setEditingEntryUid: (val) => set(() => ({ editingEntryUid: val })),
 
   currEditingEntry: null,
-  setCurrEditingEntry: (val) => set((state) => ({ currEditingEntry: val })),
+  setCurrEditingEntry: (val) => set(() => ({ currEditingEntry: val })),
 
   entryCategory: null,
-  setEntryCategory: (val) => set((state) => ({ entryCategory: val })),
+  setEntryCategory: (val) => set(() => ({ entryCategory: val })),
 
   entryType: null,
-  setEntryType: (val) => set((state) => ({ entryType: val })),
+  setEntryType: (val) => set(() => ({ entryType: val })),
 
   entryDate: null,
-  setEntryDate: (val) => set((state) => ({ entryDate: val })),
+  setEntryDate: (val) => set(() => ({ entryDate: val })),
 
   editingEntryDateBtnValue: null,
-  setEditingEntryDateBtnValue: (val) => set((state) => ({ editingEntryDateBtnValue: val })),
+  setEditingEntryDateBtnValue: (val) => set(() => ({ editingEntryDateBtnValue: val })),
 
   editingNameOrDescription: false,
   setEditingNameOrDescription: (val) =>

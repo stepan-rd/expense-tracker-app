@@ -9,7 +9,7 @@ type Props = {
 export function ProtectedRoute({ children }: Props) {
   const navigate = useNavigate();
 
-  const { loading, currUser, currUserData } = useFirebaseAuth();
+  const { loading, currUser } = useFirebaseAuth();
 
   useEffect(() => {
     if (!currUser && !loading) {

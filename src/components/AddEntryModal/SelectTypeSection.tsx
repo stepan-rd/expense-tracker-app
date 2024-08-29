@@ -2,9 +2,7 @@ import { useState } from "react";
 import { Button1 } from "../Button1";
 import { Dropdown } from "../Dropdown";
 import { OverlayInvisible } from "../OverlayInvisible";
-import { useThemeStore } from "@/state/ThemeStore";
 import { useAddEntryModalStore } from "@/state/AddEntryModalStore";
-import { motion } from "framer-motion";
 import { DropdownOptions } from "../DropdownOptions";
 
 const options = ["Income", "Expense"];
@@ -12,7 +10,6 @@ const options = ["Income", "Expense"];
 type Props = {};
 
 export function SelectTypeSection({}: Props) {
-  const { theme } = useThemeStore();
 
   const { typeBtnValue, setTypeBtnValue } = useAddEntryModalStore();
 

@@ -10,7 +10,7 @@ type Props = {};
 export function UserProfile({}: Props) {
   const { theme } = useThemeStore();
 
-  const { currUser, currUserData } = useFirebaseAuth();
+  const { currUserData } = useFirebaseAuth();
 
   const [isDropdownVisible, setIsDropdownVisible] = useState(false);
 

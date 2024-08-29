@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 import { Button1 } from "../Button1";
-import { useThemeStore } from "@/state/ThemeStore";
 import { AmountSelect } from "./AmountSelect";
 import { useAddEntryModalStore } from "@/state/AddEntryModalStore";
 import { useSelectAmountDropdownStore } from "@/state/SelectAmountDropdownStore";
@@ -8,7 +7,6 @@ import { useSelectAmountDropdownStore } from "@/state/SelectAmountDropdownStore"
 type Props = {};
 
 export function SelectAmountSection({}: Props) {
-  const { theme } = useThemeStore();
 
   const { amountBtnValue } = useAddEntryModalStore();
 

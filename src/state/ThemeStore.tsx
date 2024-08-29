@@ -23,7 +23,7 @@ type Store = {
 
 export const useThemeStore = create<Store>((set) => ({
   themeName: "light",
-  setThemeName: (val) => set((state) => ({ themeName: val })),
+  setThemeName: (val) => set(() => ({ themeName: val })),
 
   theme: {
     mainBgColor: "#fffefc",

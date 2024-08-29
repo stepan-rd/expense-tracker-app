@@ -30,10 +30,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       } else {
         setCurrUser(null);
         setCurrUserData({
-          username: null,
-          totalExpenses: 0,
-          totalIncome: 0,
-          logHistory: [],
+          username: "",
+          entries: [],
+          activityLogs: [],
+          currency: { symbol: "$", conversionRate: 1 }
         });
       }
       setLoading(false);

@@ -7,7 +7,7 @@ import {
   DisplayingTimePeriod,
   useDashboardPageStore,
 } from "@/state/DashboardPageStore";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { EntryType } from "@/types/types";
 import { useGlobalStore } from "@/state/GlobalStore";
 import { DashboardPageSettings } from "./DashboardPageSettings";
@@ -28,7 +28,7 @@ export function DashboardPage({}: Props) {
 
   const { currUserData } = useFirebaseAuth();
 
-  const { isNavbarVisible, pagePaddingLeft } = useGlobalStore();
+  const { pagePaddingLeft } = useGlobalStore();
 
   const { currDisplayingTimePeriod } = useDashboardPageStore();
 

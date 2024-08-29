@@ -1,6 +1,5 @@
 import { useFirebaseAuth } from "@/state/FirebaseAuth";
 import { useThemeStore } from "@/state/ThemeStore";
-import React, { useEffect, useState } from "react";
 
 type Props = {
   className?: string;

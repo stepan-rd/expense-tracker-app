@@ -14,7 +14,7 @@ export function RegisterPage({}: Props) {
 
   const { theme } = useThemeStore();
 
-  const { registerUser, signInWithGoogle, error, setError, saveUserData, currUser, currUserData } =
+  const { registerUser, signInWithGoogle, error, setError } =
     useFirebaseAuth();
 
   const [loading, setLoading] = useState(false);

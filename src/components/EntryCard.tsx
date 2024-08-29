@@ -1,8 +1,5 @@
-import { getCurrencyDetails } from "@/hooks/getCurrencyDetails";
-import { useGlobalStore } from "@/state/GlobalStore";
 import { useThemeStore } from "@/state/ThemeStore";
 import { EntryType } from "@/types/types";
-import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion"
 import { useFirebaseAuth } from "@/state/FirebaseAuth";
 
